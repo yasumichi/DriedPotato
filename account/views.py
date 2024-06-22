@@ -24,11 +24,6 @@ class PasswordChange(LoginRequiredMixin, PasswordChangeView):
     success_url = reverse_lazy("account:password_change_done")
     template_name = "account/password_change.html"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["form_name"] = "password_change"
-        return context
-
 class PasswordChangeDone(LoginRequiredMixin, PasswordChangeDoneView):
     """Done changed password"""
     template_name = "account/password_change_done.html"

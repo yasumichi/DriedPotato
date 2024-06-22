@@ -16,9 +16,13 @@
 		<a class="navbar-brand">{% trans "wish list" %}</a>
 		<div class="d-flex">
 			{% if user.is_authenticated %}
+            {{ user.last_name }} {{ user.first_name }}
+            <form action="{% url 'account:password_change' %}" method="POST">
+              {% csrf_token %}
+              <button class="btn btn-danger">Change Password</button>
+            </form>
 			<form action="{% url 'account:logout' %}" method="post">
 				{% csrf_token %}
-				<label>{{ user.last_name }} {{ user.first_name }}</label>
                 <button type="submit" class="btn btn-primary"><i class="bi-door-open"></i>{% trans "Log Out" %}</button>
 			</form>
 
