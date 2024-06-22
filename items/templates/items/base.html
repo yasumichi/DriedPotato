@@ -1,0 +1,36 @@
+{% load i18n %}
+{% load static %}
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'items/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'items/bootstrap-icons/font/bootstrap-icons.css' %}">
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  <body>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+		<a class="navbar-brand">{% trans "wish list" %}</a>
+		<div class="d-flex">
+			{% if user.is_authenticated %}
+			<form action="{% url 'account:logout' %}" method="post">
+				{% csrf_token %}
+				<label>{{ user.last_name }} {{ user.first_name }}</label>
+                <button type="submit" class="btn btn-primary"><i class="bi-door-open"></i>{% trans "Log Out" %}</button>
+			</form>
+
+			{% else %}
+			<p>Guest <a href="/login" class="btn btn-primary"><i class="bi-person-fill"></i>{% trans "Login" %}</a></p>
+			{% endif %}
+		</div>
+	</div>
+      </nav>
+    <div class="container-fluid">
+      {% block content %}{% endblock %}
+    </div>
+    <script src="{% static 'items/js/bootstrap.bundle.min.js' %}"></script>
+  </body>
+</html>

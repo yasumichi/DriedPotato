@@ -1,0 +1,87 @@
+{% extends "items/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ item.item_name }} - wish list{% endblock %}
+
+{% block content %}
+<h1>{{ item.item_name }}</h1>
+{% load humanize %}
+{% load mathfilters %}
+<div class="row">
+  <div class="col-6">
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th>{% trans "approval" %}</td><td>{% if item.approval %}{% trans "approval" %}{% else %}{% trans "Unapproved" %}{% endif %}</td>
+        </tr>
+        <tr>
+          <th>id</td><td>{{ item.id }}</td>
+        </tr>
+        <tr>
+          <th>{% trans "item name" %}</td><td>{{ item.item_name }}</td>
+        </tr>
+        <tr>
+          <th>{% trans "category" %}</td><td>{{ item.category }}</td>
+        </tr>
+        <tr>
+          <th>{% trans "price" %}</td><td class="right">{{ item.price|intcomma }}</td>
+        </tr>
+        <tr>
+          <th>{% trans "quantity" %}</td><td class="right">{{ item.quantity|intcomma }}</td>
+        </tr>
+        <tr>
+          <th>{% trans "total" %}</th><td class="right">{{ item.price|mul:item.quantity|intcomma }}</td>
+        </tr>
+        <tr>
+          <th>{% trans "necessity" %}</th><td><pre>{{ item.necessity }}</pre></td>
+        </tr>
+        <tr>
+          <th>{% trans "item code" %}</th><td>{% if item.item_code is not None %}{{ item.item_code }}{% endif %}</td>
+        </tr>
+        <tr>
+          <th>URL</th><td>{% if item.url is not None %}{{ item.url }}{% endif %}</td>
+        </tr>
+        <tr>
+          <th>{% trans "Registered User" %}</th><td><pre>{{ item.author.last_name }} {{ item.author.first_name }}</pre></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-6">
+    <a href="{% url 'items:update' pk=item.pk %}" class="btn btn-primary"><i class="bi-pencil"></i>{% trans "Edit" %}</a>
+    <a href="{% url 'items:delete' pk=item.pk %}" class="btn btn-danger"><i class="bi-trash"></i>{% trans "Delete" %}</a>
+    {% if user.is_staff %}
+      {% if item.approval %}
+        <a href="{% url 'items:approve' item_id=item.pk value=0 %}" class="btn btn-secondary"><i class="bi-heartbreak"></i>{% trans "Unapproval" %}</a>
+      {% else %}
+        <a href="{% url 'items:approve' item_id=item.pk value=1 %}" class="btn btn-info"><i class="bi-heart-fill"></i>{% trans "Approval" %}</a>
+      {% endif %}
+    {% endif %}
+  </div>
+</div>
+
+{% if user.is_authenticated %}
+<form action="{% url 'items:comment' item.id %}" method="POST"-->
+  {% csrf_token %}
+  <legend>{% trans "Comment" %}</legend>
+  {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+  <textarea id="comment" name="comment" class="form-control"></textarea>
+  <button type="submit" class="btn btn-secondary"><i class="bi-chat"></i>{% trans 'Comment' %}</button>
+</form>
+{% endif %}
+
+{% if comment_list %}
+<h2>{% trans "Comment List" %}</h2>
+{% for comment in comment_list %}
+<div class="card">
+  <div class="card-body">
+    <pre>{{ comment.comment }}</pre>
+    <div>{{ comment.author.last_name }} {{ comment.author.first_name }}</div>
+  </div>
+</div>
+{% endfor %}
+{% endif %}
+<hr>
+<div><a href="../">{% trans "index" %}</a></div>
+
+{% endblock %}

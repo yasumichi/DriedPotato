@@ -1,0 +1,10 @@
+{% extends "account/base.html" %}
+{% block title %}home{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-5"></h1>
+    <p>{{ user.username }}</p>
+    <a href="{% url 'account:logout' %}">logout</a>
+</div>
+{% endblock %}

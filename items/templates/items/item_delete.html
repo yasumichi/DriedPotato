@@ -1,0 +1,48 @@
+{% extends "items/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ object.item_name }} - {% trans "wish list" %}{% endblock %}
+
+{% block content %}
+{% load humanize %}
+{% load mathfilters %}
+<div class="alert alert-danger">{% blocktranslate with name=object.item_name %}Will You delete "{{ name }}"?{% endblocktranslate %}</div>
+<div class="col-6">
+<table class="table table-bordered">
+  <tbody>
+    <tr>
+      <th>{% trans "approval" %}</td><td>{{ object.approval }}</td>
+    </tr>
+    <tr>
+      <th>{% trans "id" %}</td><td>{{ object.id }}</td>
+    </tr>
+    <tr>
+      <th>{% trans "item name" %}</td><td>{{ object.item_name }}</td>
+    </tr>
+    <tr>
+      <th>{% trans "category" %}</td><td>{{ object.category }}</td>
+    </tr>
+    <tr>
+      <th>{% trans "price" %}</td><td class="right">{{ object.price|intcomma }}</td>
+    </tr>
+    <tr>
+      <th>{% trans "quantity" %}</td><td class="right">{{ object.quantity|intcomma }}</td>
+    </tr>
+    <tr>
+      <th>{% trans "total" %}</th><td class="right">{{ object.price|mul:object.quantity|intcomma }}</td>
+    </tr>
+    <tr>
+      <th>{% trans "necessity" %}</th><td><pre>{{ object.necessity }}</pre></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="d-flex">
+<form method="POST">
+  {% csrf_token %}
+  <input type="submit" value="{% trans 'Delete' %}" class="btn btn-danger">
+</form>
+<a href="{% url 'items:detail' pk=item.pk %}" class="btn btn-outline-primary">{% trans "Cancel" %}</a>
+</div>
+
+{% endblock %}

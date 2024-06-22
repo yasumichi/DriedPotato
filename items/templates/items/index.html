@@ -1,0 +1,67 @@
+{% extends "items/base.html" %}
+{% load i18n %}
+
+{% block title %}wish list{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="d-flex flex-row">
+  <a href="{% url 'items:create' %}" class="btn btn-primary"><i class="bi-database-add"></i>{% trans "New" %}</a> 
+</div>
+{% endif %}
+<div class="row">
+  {% load humanize %}
+  {% load mathfilters %}
+  {% if latest_item_list %}
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th class="field-__str__">{% trans "approval" %}</th>
+        <th class="field-__str__">id</th>
+        <th class="field-__str__">{% trans "item name" %}</th>
+        <th class="field-__str__">{% trans "category" %}</th>
+        <th class="field-__str__">{% trans "price" %}</th>
+        <th class="field-__str__">{% trans "quantity" %}</th>
+        <th class="field-__str__">{% trans "total" %}</th>
+        <th class="field-__str__">{% trans "necessity" %}</th>
+        <th class="field-__str__">{% trans "item code" %}</th>
+        <th class="field-__str__">URL</th>
+        <th class="field-__str__">{% trans "priority" %}</th>
+        <th class="field-__str__">{% trans "Registered User" %}</th>
+        {% if user.is_staff %}
+        <th class="field-__str__">{% trans "Control" %}</th>
+        {% endif %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in latest_item_list %}
+      <tr>
+        <td>{% if item.approval %}{% trans "approval" %}{% else %}{% trans "Unapproved" %}{% endif %}</td>
+        <td><a href="{% url 'items:detail' item.id %}">{{ item.id }}</a></td>
+        <td>{{ item.item_name }}</td>
+        <td>{{ item.category }}</td>
+        <td class="right">{{ item.price|intcomma }}</td>
+        <td class="right">{{ item.quantity|intcomma }}</td>
+        <td class="right">{{ item.price|mul:item.quantity|intcomma }}</td>
+        <td>{{ item.necessity }}</td>
+        <td>{% if item.item_code is not None %}{{ item.item_code }}{% endif %}</td>
+        <td>{% if item.url is not None %}{{ item.url }}{% endif %}</td>
+        <td>{{ item.priority }}</td>
+        <td>{{ item.author.last_name }} {{ item.author.first_name }}</td>
+        {% if user.is_staff %}
+        <td>
+          <a href="{% url 'items:priority' item_id=item.id value=item.priority|add:1 %}"><i class="bi-hand-thumbs-up-fill"></i></a>
+          {% if item.priority > 0 %}
+          <a href="{% url 'items:priority' item_id=item.id value=item.priority|sub:1 %}"><i class="bi-hand-thumbs-down-fill"></i></a>
+          {% endif %}
+        </td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p>No items are available.</p>
+  {% endif %}
+</div>
+{% endblock %}
