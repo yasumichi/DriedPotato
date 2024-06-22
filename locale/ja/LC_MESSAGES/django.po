@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-22 20:34+0900\n"
+"POT-Creation-Date: 2024-06-23 08:01+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,41 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: account/templates/account/login.html:3
+#: account/templates/account/login.html:26 items/templates/items/base.html:30
+msgid "Login"
+msgstr "ログイン"
+
+#: account/templates/account/login.html:3
+#: account/templates/account/login.html:9
+#: account/templates/account/password_change.html:10
+#: account/templates/account/password_change_done.html:3
+#: account/templates/account/password_change_done.html:9
+#: items/templates/items/base.html:16 items/templates/items/item_create.html:4
+#: items/templates/items/item_delete.html:4
+msgid "wish list"
+msgstr "欲しいものリスト"
+
+#: account/templates/account/password_change.html:4
+#: items/templates/items/base.html:22
+msgid "Change Password"
+msgstr "パスワード変更"
+
+#: account/templates/account/password_change.html:27
+msgid "Change"
+msgstr "変更"
+
+#: account/templates/account/password_change_done.html:3
+#: account/templates/account/password_change_done.html:15
+msgid "password changed"
+msgstr "パスワードが変更されました。"
+
+#: account/templates/account/password_change_done.html:16
+#: items/templates/items/detail.html:85
+#: items/templates/items/item_create.html:25
+msgid "index"
+msgstr "一覧"
 
 #: items/models.py:13 items/templates/items/detail.html:21
 #: items/templates/items/index.html:21
@@ -76,18 +111,13 @@ msgstr "登録ユーザー"
 msgid "comment"
 msgstr "コメント"
 
-#: items/templates/items/base.html:16 items/templates/items/item_create.html:4
-#: items/templates/items/item_delete.html:4
-msgid "wish list"
-msgstr "欲しいものリスト"
-
-#: items/templates/items/base.html:22
+#: items/templates/items/base.html:26
 msgid "Log Out"
 msgstr "ログアウト"
 
-#: items/templates/items/base.html:26
-msgid "Login"
-msgstr "ログイン"
+#: items/templates/items/base.html:30
+msgid "Guest"
+msgstr "ゲスト"
 
 #: items/templates/items/detail.html:15 items/templates/items/index.html:39
 msgid "Unapproved"
@@ -112,7 +142,6 @@ msgid "Unapproval"
 msgstr "未承認"
 
 #: items/templates/items/detail.html:57
-#| msgid "approval"
 msgid "Approval"
 msgstr "承認"
 
@@ -123,11 +152,6 @@ msgstr "コメント"
 #: items/templates/items/detail.html:74
 msgid "Comment List"
 msgstr "コメント一覧"
-
-#: items/templates/items/detail.html:85
-#: items/templates/items/item_create.html:22
-msgid "index"
-msgstr "一覧"
 
 #: items/templates/items/index.html:9
 msgid "New"
@@ -141,9 +165,14 @@ msgstr "操作"
 msgid "new item"
 msgstr "新規"
 
-#: items/templates/items/item_create.html:18
+#: items/templates/items/item_create.html:19
 msgid "Send"
-msgstr ""
+msgstr "送信"
+
+#: items/templates/items/item_create.html:22
+#: items/templates/items/item_delete.html:45
+msgid "Cancel"
+msgstr "キャンセル"
 
 #: items/templates/items/item_delete.html:9
 #, python-format
@@ -153,10 +182,6 @@ msgstr "「%(name)s」を削除しますか？"
 #: items/templates/items/item_delete.html:17
 msgid "id"
 msgstr ""
-
-#: items/templates/items/item_delete.html:45
-msgid "Cancel"
-msgstr "キャンセル"
 
 #: wishlist/settings.py:115
 msgid "Japanese"
