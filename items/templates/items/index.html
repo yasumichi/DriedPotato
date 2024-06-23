@@ -58,9 +58,9 @@
         <td><a href="{% url 'items:detail' item.id %}">{{ item.id }}</a></td>
         <td>{{ item.item_name }}</td>
         <td>{{ item.category }}</td>
-        <td class="right">{{ item.price|floatformat:"g" }}</td>
-        <td class="right">{{ item.quantity|intcomma }}</td>
-        <td class="right">{{ item.price|mul:item.quantity|floatformat:"g" }}</td>
+        <td class="text-end">{{ item.price|floatformat:"g" }}</td>
+        <td class="text-end">{{ item.quantity|intcomma }}</td>
+        <td class="text-end">{{ item.price|mul:item.quantity|floatformat:"g" }}</td>
         <td>{{ item.necessity }}</td>
         <td>{% if item.item_code is not None %}{{ item.item_code }}{% endif %}</td>
         <td>{% if item.url is not None %}{{ item.url }}{% endif %}</td>

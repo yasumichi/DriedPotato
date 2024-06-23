@@ -24,13 +24,13 @@
           <th>{% trans "category" %}</td><td>{{ item.category }}</td>
         </tr>
         <tr>
-          <th>{% trans "price" %}</td><td class="right">{{ item.price|floatformat:"g" }}</td>
+          <th>{% trans "price" %}</td><td class="text-end">{{ item.price|floatformat:"g" }}</td>
         </tr>
         <tr>
-          <th>{% trans "quantity" %}</td><td class="right">{{ item.quantity|intcomma }}</td>
+          <th>{% trans "quantity" %}</td><td class="text-end">{{ item.quantity|intcomma }}</td>
         </tr>
         <tr>
-          <th>{% trans "total" %}</th><td class="right">{{ item.price|mul:item.quantity|floatformat:"g" }}</td>
+          <th>{% trans "total" %}</th><td class="text-end">{{ item.price|mul:item.quantity|floatformat:"g" }}</td>
         </tr>
         <tr>
           <th>{% trans "necessity" %}</th><td><pre>{{ item.necessity }}</pre></td>
