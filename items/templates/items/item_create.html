@@ -16,7 +16,9 @@
 	{% endfor %}
 	<div class="submit-row">
         <button type="submit" class="btn btn-primary"><i class="bi-send"></i>{% trans "Send" %}</button>
+        {% if item %}
         <a href="{% url 'items:detail' pk=item.pk %}" class="btn btn-outline-primary">{% trans "Cancel" %}</a>
+        {% endif %}
 	</div>
 </form>
 <hr>
