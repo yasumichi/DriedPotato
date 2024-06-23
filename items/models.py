@@ -12,7 +12,7 @@ class ItemCategory(models.Model):
 class Item(models.Model):
     item_name = models.CharField(max_length=100, verbose_name=_("item name"))
     category = models.ForeignKey(ItemCategory, on_delete=models.RESTRICT,  verbose_name=_("category"))
-    price = models.IntegerField(validators=[MinValueValidator(1)], verbose_name=_("price"))
+    price = models.DecimalField(validators=[MinValueValidator(1)], max_digits=19, decimal_places=3, verbose_name=_("price"))
     quantity = models.IntegerField(validators=[MinValueValidator(1)], verbose_name=_("quantity"))
     necessity = models.TextField(verbose_name=_("necessity"))
     approval = models.BooleanField(default=False, verbose_name=_("approval"))
