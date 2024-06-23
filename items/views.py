@@ -15,7 +15,24 @@ class IndexView(ListView):
     context_object_name = "latest_item_list"
 
     def get_queryset(self):
-        return Item.objects.order_by("-priority", "id")
+        return Item.objects.filter(approval = False).order_by("-priority", "id")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["mode"] = 'index'
+        return context
+
+class ApprovalListView(ListView):
+    template_name = "items/index.html"
+    context_object_name = "latest_item_list"
+
+    def get_queryset(self):
+        return Item.objects.filter(approval = True).order_by("-priority", "id")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["mode"] = 'approval'
+        return context
 
 class DetailView(DetailView):
     model = Item
@@ -93,4 +110,4 @@ def priority(request, item_id, value):
     item.priority = value
     item.save()
 
-    return HttpResponseRedirect(reverse("items:index"))
+    return HttpResponseRedirect(request.META["HTTP_REFERER"])
