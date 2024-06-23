@@ -16,7 +16,7 @@
 		<a class="navbar-brand">{% trans "wish list" %}</a>
 		<div class="d-flex">
 			{% if user.is_authenticated %}
-            {{ user.last_name }} {{ user.first_name }}
+            {% blocktranslate with first_name=user.first_name last_name=user.last_name%}{{ first_name }} {{ last_name }}{% endblocktranslate %}
             <form action="{% url 'account:password_change' %}" method="POST">
               {% csrf_token %}
               <button class="btn btn-danger">{% trans 'Change Password' %}</button>

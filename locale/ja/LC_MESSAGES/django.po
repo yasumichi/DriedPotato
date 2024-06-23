@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-23 09:08+0900\n"
+"POT-Creation-Date: 2024-06-23 22:09+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,7 +49,7 @@ msgstr "パスワードが変更されました。"
 
 #: account/templates/account/password_change_done.html:16
 #: items/templates/items/detail.html:85
-#: items/templates/items/item_create.html:23
+#: items/templates/items/item_create.html:25
 msgid "index"
 msgstr "一覧"
 
@@ -110,6 +110,12 @@ msgstr "登録ユーザー"
 #: items/models.py:34
 msgid "comment"
 msgstr "コメント"
+
+#: items/templates/items/base.html:19 items/templates/items/detail.html:45
+#: items/templates/items/detail.html:79 items/templates/items/index.html:68
+#, python-format
+msgid "%(first_name)s %(last_name)s"
+msgstr "%(last_name)s　%(first_name)s"
 
 #: items/templates/items/base.html:26
 msgid "Log Out"
@@ -175,7 +181,7 @@ msgstr "新規"
 msgid "Send"
 msgstr "送信"
 
-#: items/templates/items/item_create.html:19
+#: items/templates/items/item_create.html:20
 #: items/templates/items/item_delete.html:45
 msgid "Cancel"
 msgstr "キャンセル"
