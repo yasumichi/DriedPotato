@@ -32,7 +32,7 @@
       <th>{% trans "total" %}</th><td class="text-end">{{ object.price|mul:object.quantity|intcomma }}</td>
     </tr>
     <tr>
-      <th>{% trans "necessity" %}</th><td><pre>{{ object.necessity }}</pre></td>
+      <th>{% trans "necessity" %}</th><td>{{ object.necessity|linebreaksbr }}</td>
     </tr>
   </tbody>
 </table>

@@ -33,7 +33,7 @@
           <th>{% trans "total" %}</th><td class="text-end">{{ item.price|mul:item.quantity|floatformat:"g" }}</td>
         </tr>
         <tr>
-          <th>{% trans "necessity" %}</th><td><pre>{{ item.necessity }}</pre></td>
+          <th>{% trans "necessity" %}</th><td>{{ item.necessity|linebreaksbr }}</td>
         </tr>
         <tr>
           <th>{% trans "item code" %}</th><td>{% if item.item_code is not None %}{{ item.item_code }}{% endif %}</td>
