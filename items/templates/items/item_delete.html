@@ -6,6 +6,7 @@
 {% block content %}
 {% load humanize %}
 {% load mathfilters %}
+<div id="detail-main">
 <div class="alert alert-danger">{% blocktranslate with name=object.item_name %}Will You delete "{{ name }}"?{% endblocktranslate %}</div>
 <div class="col-6">
 <table class="table table-bordered">
@@ -43,6 +44,7 @@
   <input type="submit" value="{% trans 'Delete' %}" class="btn btn-danger">
 </form>
 <a href="{% url 'items:detail' pk=item.pk %}" class="btn btn-outline-primary">{% trans "Cancel" %}</a>
+</div>
 </div>
 
 {% endblock %}

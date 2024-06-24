@@ -1,0 +1,38 @@
+#titlebar {
+  position: fixed;
+  top: 0px;
+  width: 100vw;
+  z-index: 1;
+}
+
+#tabbar {
+  position: fixed;
+  top: 57px;
+  width: 100vw;
+  z-index: 1;
+}
+
+#main {
+  position: fixed;
+  top: 99px;
+  max-height: calc(100vh - 100px);
+  overflow: scroll;
+}
+
+.table-sticky thead th {
+  position: sticky;
+  top: 0px;
+  z-index: 1;
+}
+
+#detail-main {
+  position: fixed;
+  top: 57px;
+  max-height: calc(100vh - 100px);
+  overflow: scroll;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+}

@@ -4,13 +4,8 @@
 {% block title %}wish list{% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
-<div class="d-flex flex-row">
-  <a href="{% url 'items:create' %}" class="btn btn-primary"><i class="bi-database-add"></i>{% trans "New" %}</a> 
-</div>
-{% endif %}
-<div class="row">
-  <ul class="nav nav-tabs">
+<div id="tabbar" class="row">
+  <ul class="nav nav-tabs col-10">
     <li class="nav-item">
       {% if mode|stringformat:"s" == "index" %}
       <a class="nav-link active" href="{% url 'items:index' %}">{% trans "Unapproval" %}</a>
@@ -26,12 +21,15 @@
       {% endif %}
     </li>
   </ul>
+  {% if user.is_authenticated %}
+  <div class="col-2 text-end"><a href="{% url 'items:create' %}" class="btn btn-primary"><i class="bi-database-add"></i>{% trans "New" %}</a></div>
+  {% endif %}
 </div>
-<div class="row">
+<div id="main" class="row">
   {% load humanize %}
   {% load mathfilters %}
   {% if latest_item_list %}
-  <table class="table table-bordered">
+  <table class="table table-bordered table-sticky">
     <thead>
       <tr>
         <th class="field-__str__">{% trans "approval" %}</th>

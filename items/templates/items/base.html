@@ -7,30 +7,31 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="{% static 'items/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'items/css/wishlist.css' %}">
     <link rel="stylesheet" href="{% static 'items/bootstrap-icons/font/bootstrap-icons.css' %}">
     <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <nav id="titlebar" class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
 		<a class="navbar-brand">{% trans "wish list" %}</a>
-		<div class="d-flex">
-			{% if user.is_authenticated %}
-            {% blocktranslate with first_name=user.first_name last_name=user.last_name%}{{ first_name }} {{ last_name }}{% endblocktranslate %}
-            <form action="{% url 'account:password_change' %}" method="POST">
-              {% csrf_token %}
-              <button class="btn btn-danger">{% trans 'Change Password' %}</button>
-            </form>
-			<form action="{% url 'account:logout' %}" method="post">
-				{% csrf_token %}
-                <button type="submit" class="btn btn-primary"><i class="bi-door-open"></i>{% trans "Log Out" %}</button>
-			</form>
+        <div class="d-flex">
+          {% if user.is_authenticated %}
+          {% blocktranslate with first_name=user.first_name last_name=user.last_name%}{{ first_name }} {{ last_name }}{% endblocktranslate %}
+          <form action="{% url 'account:password_change' %}" method="POST">
+            {% csrf_token %}
+            <button class="btn btn-danger">{% trans 'Change Password' %}</button>
+          </form>
+          <form action="{% url 'account:logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary"><i class="bi-door-open"></i>{% trans "Log Out" %}</button>
+          </form>
 
-			{% else %}
-            <p>{% trans 'Guest' %}<a href="/login" class="btn btn-primary"><i class="bi-person-fill"></i>{% trans "Login" %}</a></p>
-			{% endif %}
-		</div>
-	</div>
+          {% else %}
+          {% trans 'Guest' %}<a href="/login" class="btn btn-primary"><i class="bi-person-fill"></i>{% trans "Login" %}</a>
+          {% endif %}
+        </div>
+        </div>
       </nav>
     <div class="container-fluid">
       {% block content %}{% endblock %}

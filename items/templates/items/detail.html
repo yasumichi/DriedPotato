@@ -4,10 +4,10 @@
 {% block title %}{{ item.item_name }} - wish list{% endblock %}
 
 {% block content %}
-<h1>{{ item.item_name }}</h1>
 {% load humanize %}
 {% load mathfilters %}
-<div class="row">
+<div id="detail-main" class="row">
+  <h1>{{ item.item_name }}</h1>
   <div class="col-6">
     <table class="table table-bordered">
       <tbody>
@@ -58,7 +58,6 @@
       {% endif %}
     {% endif %}
   </div>
-</div>
 
 {% if user.is_authenticated %}
 <form action="{% url 'items:comment' item.id %}" method="POST"-->
@@ -81,7 +80,9 @@
 </div>
 {% endfor %}
 {% endif %}
-<hr>
+</div>
+<div id="footer" class="border-top">
 <div><a href="../">{% trans "index" %}</a></div>
+</div>
 
 {% endblock %}
