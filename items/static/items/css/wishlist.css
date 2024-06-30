@@ -15,8 +15,8 @@
 #main {
   position: fixed;
   top: 99px;
-  max-height: calc(100vh - 100px);
-  overflow: scroll;
+  height: calc(100vh - 100px);
+  overflow-y: scroll;
 }
 
 .table-sticky thead th {
@@ -28,8 +28,17 @@
 #detail-main {
   position: fixed;
   top: 57px;
-  max-height: calc(100vh - 100px);
-  overflow: scroll;
+  height: calc(100vh - 100px);
+  overflow-y: scroll;
+}
+
+#comment-list {
+  position: fixed;
+  top: 201px;
+  height: calc(100vh - 249px);
+  overflow-y: scroll;
+  width: 48%;
+  bottom: 25px;
 }
 
 #footer {

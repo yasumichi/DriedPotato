@@ -6,9 +6,9 @@
 {% block content %}
 {% load humanize %}
 {% load mathfilters %}
-<div id="detail-main" class="row">
-  <h1>{{ item.item_name }}</h1>
+<div id="detail-main" class="row w-100">
   <div class="col-6">
+    <h1>{{ item.item_name }}</h1>
     <table class="table table-bordered">
       <tbody>
         <tr>
@@ -46,43 +46,46 @@
         </tr>
       </tbody>
     </table>
+    <div>
+      <a href="{% url 'items:update' pk=item.pk %}" class="btn btn-primary"><i class="bi-pencil"></i>{% trans "Edit" %}</a>
+      <a href="{% url 'items:delete' pk=item.pk %}" class="btn btn-danger"><i class="bi-trash"></i>{% trans "Delete" %}</a>
+      {% if user.is_staff %}
+        {% if item.approval %}
+          <a href="{% url 'items:approve' item_id=item.pk value=0 %}" class="btn btn-secondary"><i class="bi-heartbreak"></i>{% trans "Unapproval" %}</a>
+        {% else %}
+          <a href="{% url 'items:approve' item_id=item.pk value=1 %}" class="btn btn-info"><i class="bi-heart-fill"></i>{% trans "Approval" %}</a>
+        {% endif %}
+      {% endif %}
+    </div>
   </div>
   <div class="col-6">
-    <a href="{% url 'items:update' pk=item.pk %}" class="btn btn-primary"><i class="bi-pencil"></i>{% trans "Edit" %}</a>
-    <a href="{% url 'items:delete' pk=item.pk %}" class="btn btn-danger"><i class="bi-trash"></i>{% trans "Delete" %}</a>
-    {% if user.is_staff %}
-      {% if item.approval %}
-        <a href="{% url 'items:approve' item_id=item.pk value=0 %}" class="btn btn-secondary"><i class="bi-heartbreak"></i>{% trans "Unapproval" %}</a>
-      {% else %}
-        <a href="{% url 'items:approve' item_id=item.pk value=1 %}" class="btn btn-info"><i class="bi-heart-fill"></i>{% trans "Approval" %}</a>
-      {% endif %}
+    {% if user.is_authenticated %}
+    <form action="{% url 'items:comment' item.id %}" method="POST"-->
+      {% csrf_token %}
+      <legend>{% trans "Comment" %}</legend>
+      {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+      <textarea id="comment" name="comment" class="form-control"></textarea>
+      <button type="submit" class="btn btn-secondary"><i class="bi-chat"></i>{% trans 'Comment' %}</button>
+    </form>
+    {% endif %}
+
+    {% if comment_list %}
+    <div id="comment-list">
+      {% for comment in comment_list %}
+      <div class="card">
+        <div class="card-body">
+          <pre>{{ comment.comment }}</pre>
+          <div>{% blocktranslate with first_name=comment.author.first_name last_name=comment.author.last_name%}{{ first_name }} {{ last_name }}{% endblocktranslate %}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
     {% endif %}
   </div>
 
-{% if user.is_authenticated %}
-<form action="{% url 'items:comment' item.id %}" method="POST"-->
-  {% csrf_token %}
-  <legend>{% trans "Comment" %}</legend>
-  {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-  <textarea id="comment" name="comment" class="form-control"></textarea>
-  <button type="submit" class="btn btn-secondary"><i class="bi-chat"></i>{% trans 'Comment' %}</button>
-</form>
-{% endif %}
-
-{% if comment_list %}
-<h2>{% trans "Comment List" %}</h2>
-{% for comment in comment_list %}
-<div class="card">
-  <div class="card-body">
-    <pre>{{ comment.comment }}</pre>
-    <div>{% blocktranslate with first_name=comment.author.first_name last_name=comment.author.last_name%}{{ first_name }} {{ last_name }}{% endblocktranslate %}</div>
-  </div>
 </div>
-{% endfor %}
-{% endif %}
-</div>
-<div id="footer" class="border-top">
-<div><a href="../">{% trans "index" %}</a></div>
+<div id="footer" class="row w-100 border-top">
+  <div><a href="../">{% trans "index" %}</a></div>
 </div>
 
 {% endblock %}
