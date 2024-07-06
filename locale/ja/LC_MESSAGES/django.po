@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-30 19:55+0900\n"
+"POT-Creation-Date: 2024-07-06 11:58+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,20 +18,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#: DriedPotato/settings.py:115
+msgid "Japanese"
+msgstr "日本語"
+
+#: DriedPotato/settings.py:116
+msgid "English"
+msgstr "英語"
+
 #: account/templates/account/login.html:3
 #: account/templates/account/login.html:26 items/templates/items/base.html:31
 msgid "Login"
 msgstr "ログイン"
-
-#: account/templates/account/login.html:3
-#: account/templates/account/login.html:9
-#: account/templates/account/password_change.html:10
-#: account/templates/account/password_change_done.html:3
-#: account/templates/account/password_change_done.html:9
-#: items/templates/items/base.html:17 items/templates/items/item_create.html:4
-#: items/templates/items/item_delete.html:4
-msgid "wish list"
-msgstr "欲しいものリスト"
 
 #: account/templates/account/password_change.html:4
 #: items/templates/items/base.html:23
@@ -191,13 +189,3 @@ msgstr "「%(name)s」を削除しますか？"
 msgid "id"
 msgstr ""
 
-#: wishlist/settings.py:115
-msgid "Japanese"
-msgstr "日本語"
-
-#: wishlist/settings.py:116
-msgid "English"
-msgstr "英語"
-
-#~ msgid "Comment List"
-#~ msgstr "コメント一覧"
