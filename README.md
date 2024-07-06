@@ -32,7 +32,7 @@ See [Databases | Django documentation | Django](https://docs.djangoproject.com/e
 $ python manage.py migrate
 ```
 
-## Create super user
+### Create super user
 
 ```
 $ python manage.py createsuperuser
