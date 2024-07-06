@@ -1,5 +1,5 @@
-# wishlist
+# DriedPotato
 
-This application Manage what your team wants.
+DriedPotato manage what your team wants.
 
 
