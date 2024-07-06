@@ -34,6 +34,7 @@
           continue;
         }
 
+        delete sh[rangeName].l; // disable hyperlink
         sh[rangeName].s = border;
       }
       XLSX.writeFile(wb, filename); 
