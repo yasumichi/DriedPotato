@@ -15,6 +15,7 @@
       <nav id="titlebar" class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
 		<a class="navbar-brand">DriedPotate</a>
+        <span class="navbar-text">manage what your team wants.</span>
         <div class="d-flex">
           {% if user.is_authenticated %}
           {% blocktranslate with first_name=user.first_name last_name=user.last_name%}{{ first_name }} {{ last_name }}{% endblocktranslate %}

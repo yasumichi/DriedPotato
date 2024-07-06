@@ -3,6 +3,16 @@
   top: 0px;
   width: 100vw;
   z-index: 1;
+  color: white!important;
+  background-color: #c71585!important;
+}
+
+.navbar-brand {
+  color: white!important;
+}
+
+.navbar-text {
+  color: white!important;
 }
 
 #tabbar {
@@ -16,7 +26,12 @@
   position: fixed;
   top: 99px;
   height: calc(100vh - 100px);
-  overflow-y: scroll;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.table-sticky {
+  height: fit-content;
 }
 
 .table-sticky thead th {
