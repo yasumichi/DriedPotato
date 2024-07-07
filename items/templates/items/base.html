@@ -9,12 +9,13 @@
     <link rel="stylesheet" href="{% static 'items/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'items/css/DriedPotato.css' %}">
     <link rel="stylesheet" href="{% static 'items/bootstrap-icons/font/bootstrap-icons.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'items/images/DriedPotato.png' %}">
     <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
       <nav id="titlebar" class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-		<a class="navbar-brand">DriedPotate</a>
+          <a class="navbar-brand"><img src="{% static 'items/images/DriedPotato.png' %}">DriedPotate</a>
         <span class="navbar-text">manage what your team wants.</span>
         <div class="d-flex">
           {% if user.is_authenticated %}
