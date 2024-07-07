@@ -1,4 +1,4 @@
-# DriedPotato
+# ![](https://github.com/yasumichi/DriedPotato/blob/main/items/static/items/images/DriedPotato.png)DriedPotato
 
 DriedPotato manage what your team wants.
 
