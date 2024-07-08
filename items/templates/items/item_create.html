@@ -4,7 +4,7 @@
 {% block title %}{% trans "new item" %} - DriedPotato{% endblock %}
 
 {% block content %}
-<div id="detail-main">
+<div id="detail-main" class="row w-50">
 <form method="post">
 	{% csrf_token %}
 	{{ form.non_field_errors }}

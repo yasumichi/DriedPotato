@@ -6,8 +6,8 @@
 {% block content %}
 {% load humanize %}
 {% load mathfilters %}
-<div id="detail-main">
-<div class="alert alert-danger">{% blocktranslate with name=object.item_name %}Will You delete "{{ name }}"?{% endblocktranslate %}</div>
+<div id="detail-main" class="w-100">
+<div class="alert alert-danger col-6">{% blocktranslate with name=object.item_name %}Will You delete "{{ name }}"?{% endblocktranslate %}</div>
 <div class="col-6">
 <table class="table table-bordered">
   <tbody>
