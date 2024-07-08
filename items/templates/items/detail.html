@@ -47,8 +47,10 @@
       </tbody>
     </table>
     <div>
+      {% if user.is_authenticated %}
       <a href="{% url 'items:update' pk=item.pk %}" class="btn btn-primary"><i class="bi-pencil"></i>{% trans "Edit" %}</a>
       <a href="{% url 'items:delete' pk=item.pk %}" class="btn btn-danger"><i class="bi-trash"></i>{% trans "Delete" %}</a>
+      {% endif %}
       {% if user.is_staff %}
         {% if item.approval %}
           <a href="{% url 'items:approve' item_id=item.pk value=0 %}" class="btn btn-secondary"><i class="bi-heartbreak"></i>{% trans "Unapproval" %}</a>

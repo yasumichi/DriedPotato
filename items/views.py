@@ -58,7 +58,7 @@ class ItemCreateView(LoginRequiredMixin, CreateView):
         messages.success(self.request, 'Item created')
         return resolve_url("items:index")
 
-class ItemUpdateView(UpdateView):
+class ItemUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "items/item_create.html"
     form_class = ItemForm
     model = Item
@@ -66,7 +66,7 @@ class ItemUpdateView(UpdateView):
     def get_success_url(self):
         return reverse_lazy("items:index")
 
-class ItemDeleteView(DeleteView):
+class ItemDeleteView(LoginRequiredMixin, DeleteView):
     template_name = "items/item_delete.html"
     model = Item
     success_url = reverse_lazy("items:index")
